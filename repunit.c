@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+//comentario
+
 int main(){
 	int num,y;
 	bool x=true;
