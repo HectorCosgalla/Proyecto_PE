@@ -220,6 +220,7 @@ void inversaMatriz(float a[][MAX], int n){
 		}
 	}
 
+printf("\n");
 printf("A^-1: \n");
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
@@ -227,44 +228,4 @@ printf("A^-1: \n");
 		}
 		printf("\n");
 	}
-
-/*	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			printf("%f   ", a[i][j] );
-		}
-		printf("\n");
-	}
-	float c[MAX][MAX], pivote;
-	int m, x, y, i, j, k, l;
-	for(i=0; i<n; i++)
-	{
-		j=i;
-		pivote=a[i][j];
-		c[i][j]=1/pivote;
-		for(m=0; m<n; m++){
-			if(m != i){
-				c[i][m]=a[i][m]/pivote;
-				c[m][j]=-a[m][j]/pivote;
-			}
-		}
-		for(x=0 ;x<n; x++){
-			for(y=0; y<n; y++){
-				if(x!=i && y!=j){
-					c[x][y]=a[x][y]-(a[i][y]*a[x][j])/pivote;
-				}
-			}
-		}
-		for(k=0; k<n; k++){
-			for(l=0; l<n; l++){
-				a[k][l]=c[k][l];
-			}
-		}
-	}
-	printf("C:\n");
-	for(i=0; i<n; i++){
-		for(j=0; j<n; j++){
-			printf("%f  ",c[i][j]);
-		}
-		puts("\n");
-	} */
 }
