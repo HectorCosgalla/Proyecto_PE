@@ -9,6 +9,7 @@
 
 int main(){
   /********** DECLARACION DE VARIABLES **********/
+  int parenA = 0, ParenC = 0, i = 0, j = 0;
   char str[MAX];
   bool error = false;
   /********** ENTRADAS **********/
@@ -16,11 +17,14 @@ int main(){
   fflush(stdin);
   gets(str);
   /********** PROCESOS **********/
-  int i = 0;
   while (str[i] != '\0' && error == false) {
-    if ((str[i] <= 39 || str[i] == 44 || str[i] == 46 || str[i] >= 58) && str[i] != 94) {
-      printf("\nERROR DE LEXICO EN LA POSICION '%d'(caracter: %c)\n", i+1, str[i]);
-      error = true;
+    if (i == 0) {
+      while (str[i] != '\0' && error == false) {
+        if ((str[i] <= 39 || str[i] == 44 || str[i] == 46 || str[i] >= 58) && str[i] != 94) {
+          printf("\nERROR DE LEXICO EN LA POSICION '%d'(caracter: %c)\n", i+1, str[i]);
+          error = true;
+        }
+      }
     }
     i++;
   }
