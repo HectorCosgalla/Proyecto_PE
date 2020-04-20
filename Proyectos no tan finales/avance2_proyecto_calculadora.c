@@ -10,7 +10,7 @@
 
 	int main(){
 		/********** DECLARACION DE VARIABLES **********/
-		int parenA = 0, parenC = 0, i = 0, j = 0;
+		int parenA = 0, parenC = 0, i = 0, j = 0, k=0;
 		char str[MAX];
 		bool error = false;
 		/********** ENTRADAS **********/
@@ -54,30 +54,33 @@
 		//INICIO
 		char E;
 		bool precedencia = false;
-		int len=strlen(str);
-		char pila[len+1];
-		char listaSalida[len+1];
+		int len=strlen(str)+1;
+		char pila[len];
+		char listaSalida[len];
+		for (size_t i = 0; i < len; i++) {
+			pila[i] = '\0';
+			listaSalida[i] = '\0';
+		}
 		i=0;
 		j=0;
-		pila[len]='\0';
-		listaSalida[len]='\0';
-		len=len-1;
 		while(str[i] != '\0' && error == false){
 			E = str[i];
-			if(E>47 || E<58){
-				listaSalida[i]=E;
-			}if(E==120){
-				listaSalida[i]=E;
-			}if(E==40){
+			if(E>47 && E<58){
+				listaSalida[j]=E;
+				j++;
+			}
+			if(E==40){
 				pila[j]=E;
-			}if(E==41){
+			}
+			if(E==41){
 				while(pila[j] != '\0' && pila[j-1] != 40){
 					listaSalida[i]=pila[j-1];
 					j++;
 				}
 			}
+
 			if(E == 42 || E == 43 || E == 45 || E == 47 || E == 94){
-				if(pila[j] == 43 || pila[j] == 45){
+				/*if(pila[j] == 43 || pila[j] == 45){
 					precedencia=true;
 				}if(pila[j] == 42 || pila[j] ==47 && pila[j-1] != 43 || pila[j-1] != 45){
 					precedencia=true;
@@ -92,16 +95,14 @@
 					listaSalida[i]=pila[j];
 					j++;
 				}
+				*/
+				pila[k]=E;
+				k++;
 			}
 			i++;
+			printf("%s || %s\n", listaSalida, pila);
 		}
-		i=0;
-		j=0;
-		while(pila[j] != '\0'){
-			listaSalida[i]=pila[j];
-			i++;
-			j++;
-		}
+		listaSalida[i-1] = pila[0];
 		printf("Lista de salida=%s\n", listaSalida);
 		/********** SALIDAS **********/
 		printf("\nLista de entrada=%s\n", str);
