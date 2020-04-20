@@ -4,7 +4,7 @@
 #include "string.h"
 #define MAX 30
 
-	//Cadena de prueba: -4*(-5-2)(-1*4-3)
+	//Cadena de prueba: 4*(5-2)(1*4-3)
 	/********** PROTOTIPO DE FUNCIONES **********/
 
 
