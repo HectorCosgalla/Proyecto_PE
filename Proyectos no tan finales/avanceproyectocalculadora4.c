@@ -4,7 +4,8 @@
 #include "string.h"
 #define MAX 30
 
-//Cadena de prueba: -4*(-5-2)(-1*4-3)
+//Cadena de prueba: -4*(-5-2)*(-1*4-3)
+//CREADO POR: hEBERTH NEGRON Y HECTOR COSGALLA
 /********** PROTOTIPO DE FUNCIONES **********/
 
 
@@ -14,7 +15,7 @@ int main(){
 	char str[MAX];
 	bool error = false;
 	/********** ENTRADAS **********/
-	printf("ingresa la cadena prro\n");
+	printf("ingresa una expresion aritmetica\n");
 	fflush(stdin);
 	gets(str);
 	/********** PROCESOS **********/
@@ -105,7 +106,6 @@ int main(){
 			k++;
 		}
 		i++;
-		printf("%s || %s\n", listaSalida, pila);
 	}
 	i = 0;
 	while (pila[i] != '\0') {
