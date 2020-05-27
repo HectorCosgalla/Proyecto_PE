@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stdbool.h"
+#include "string.h"
 
 void pantalla1();
 void pantalla2();
@@ -10,11 +11,12 @@ void pantalla4();
 int main() {
 	int opc;
 	bool exit = false;
+	system("color 0F");
 	puts("\n\n\n\n\n\n\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 	puts("\t------------------------------------------------------------------------------------------BIENVENIDO-------------------------------------------------------------------------------------------");
 	puts("\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n\n\n\n");
-	puts("\t\t\t\t\t\t\t\t\t\tUsuario: \n");
-	printf("\t\t\t\t\t\t\t\t\t\tContrase%ca: \n\n\n\n\n\n\n\n\n\n\n\n\n\n", 164);
+	puts("\t\t\t\t\t\t\t\t\t\t\n");//puts("\t\t\t\t\t\t\t\t\t\tUsuario: \n");
+	printf("\t\t\t\t\t\t\t\t\t\t\t    ADMINISTRADOR DE TIENDA\n\n\n\n\n\n\n\n\n\n\n\n\n\n");//printf("\t\t\t\t\t\t\t\t\t\tContrase%ca: \n\n\n\n\n\n\n\n\n\n\n\n\n\n", 164);
 	puts("\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 	puts("\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 	puts("\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -27,6 +29,7 @@ int main() {
 		puts("\n\n\t\t\t\t\t\t\t\t\t\t3)Consultar disponibilidad de un articulo. ");
 		puts("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t4)Consultar inventario.");
 		puts("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t5)Salir\n\n\n\n\n\n\n");
+		printf("Su seleccion: ");
 		scanf("%i",&opc);
 		switch(opc){
 		case 1:
@@ -54,6 +57,105 @@ int main() {
 }
 
 void pantalla1() {
+	int codigo;
+	system("cls");
+	puts("\n\n\n\n\n\t......................................................");
+	printf("\t|Nombre del articulo:      |");
+	puts("Ejemploarticulo          ");
+	puts("\t......................................................");
+	printf("\t|Descripcion del articulo: |");
+	puts("VESTIDO ROJO LARGO       ");
+	puts("\t......................................................");
+	printf("\t|Piezas:                   |");
+	puts("5                        ");
+	puts("\t......................................................");
+	printf("\t|Codigo del articulo:      |");
+	//puts("EJEMPLO12345             ");
+	scanf("%d", &codigo);
+
+	system("cls");
+	system("color 2F");
+	puts("\n\n\n\n\n\t\t\t SE A GUARDADO EXITOSAMENTE\n\n\n\n\n");
+	system("pause");
+	system("color 0F");
+}
+
+void pantalla2() {
+	char art[20];
+	int valido, opc;
+	system("cls");
+	puts("Buscar en el sistema: ");
+	fflush(stdin);
+	gets(art);
+	valido = strcmp(art,"Ejemploarticulo");
+	if (valido != 0) {
+		system("cls");
+		system("color C0");
+		puts("\n\n\n\n\n\t\t\t NO SE HA ENCONTRADO EL ARTICULO\n\n\n\n\n");
+		system("pause");
+		system("color 0F");
+	} else{
+		system("cls");
+		puts("\n\n\n\n\n\t......................................................");
+		printf("\t|1)Nombre del articulo:      |");
+		puts("Ejemploarticulo          |");
+		puts("\t......................................................");
+		printf("\t|2)Descripcion del articulo: |");
+		puts("VESTIDO ROJO LARGO       |");
+		puts("\t......................................................");
+		printf("\t|3)Piezas:                   |");
+		puts("5                        |");
+		puts("\t......................................................");
+		printf("\t|4)Codigo del articulo:      |");
+		puts("0123456789             |");
+		puts("\t......................................................");
+		printf("Seleccione la opcion que desea modificar: ");
+		scanf("%d", &opc);
+
+		system("cls");
+		puts("Usted selecciono la opcion 4 \n");
+		puts("|valor anterior:	0123456789");
+		printf("|Valor actual: ");
+		scanf("%d", &valido);
+
+		system("cls");
+		system("color 2F");
+		puts("\n\n\n\n\n\t\t\t SE A GUARDADO EXITOSAMENTE\n\n\n\n\n");
+		system("pause");
+		system("color 0F");
+	}
+
+
+}
+
+void pantalla3() {
+	char art[20];
+	int valido, opc;
+	system("cls");
+	puts("Buscar en el sistema: ");
+	fflush(stdin);
+	gets(art);
+	valido = strcmp(art,"Ejemploarticulo");
+	if (valido != 0) {
+		system("cls");
+		system("color C0");
+		puts("\n\n\n\n\n\t\t\t NO HAY ARTICULOS DISPONIBLES\n\n\n\n\n");
+		system("pause");
+		system("color 0F");
+	} else {
+		system("cls");
+		puts("\n\n\n\n\n\t......................................................");
+		printf("\t|Nombre del articulo:      |");
+		puts("Ejemploarticulo          |");
+		puts("\t......................................................");
+		printf("\t|Piezas:                   |");
+		puts("5                        |");
+		puts("\t......................................................");
+		system("pause");
+	}
+}
+
+void pantalla4() {
 	system("cls");
 	puts("\n\n\n\n\n\t......................................................");
 	printf("\t|Nombre del articulo:      |");
@@ -66,66 +168,8 @@ void pantalla1() {
 	puts("5                        |");
 	puts("\t......................................................");
 	printf("\t|Codigo del articulo:      |");
-	puts("EJEMPLO12345             |");
-	puts("\t......................................................");
-	system("pause");
-}
-
-void pantalla2() {
-	system("cls");
-	puts("\n\n\n\t\t\tBuscar en el sistema: ");
-	system("pause");
-	system("cls");
-	puts("\n\nSeleccione la opcion que desea modificar:\n");
-	printf("\t|1)Nombre del articulo:      |");
-	puts("Ejemploarticulo          |");
-	puts("\t......................................................");
-	printf("\t|2)Descripcion del articulo: |");
-	puts("VESTIDO ROJO LARGO       |");
-	puts("\t......................................................");
-	printf("\t|3)Piezas:                   |");
-	puts("5                        |");
-	puts("\t......................................................");
-	printf("\t|4)Codigo del articulo:      |");
-	puts("EJEMPLO12345             |");
-	puts("\t......................................................");
-	system("pause");
-}
-
-void pantalla3() {
-	system("cls");
-	puts("\n\n\n\t\t\tBuscar en el sistema: ");
-	system("pause");
-	system("cls");
-	printf("\t|Nombre del articulo:      |");
-	puts("Ejemploarticulo          |");
-	puts("\t......................................................");
-	printf("\t|Descripcion del articulo: |");
-	puts("VESTIDO ROJO LARGO       |");
-	puts("\t......................................................");
-	printf("\t|Piezas:                   |");
-	puts("5                        |");
-	puts("\t......................................................");
-	printf("\t|Codigo del articulo:      |");
-	puts("EJEMPLO12345             |");
-	puts("\t......................................................");
-	system("pause");
-}
-
-void pantalla4() {
-	system("cls");
-	printf("\t|Nombre del articulo:      |");
-	puts("Ejemploarticulo          |");
-	puts("\t......................................................");
-	printf("\t|Descripcion del articulo: |");
-	puts("VESTIDO ROJO LARGO       |");
-	puts("\t......................................................");
-	printf("\t|Piezas:                   |");
-	puts("5                        |");
-	puts("\t......................................................");
-	printf("\t|Codigo del articulo:      |");
-	puts("EJEMPLO12345             |");
-	puts("\t......................................................\n\n");
+	puts("1234567890             |");
+	puts("\n\n\t......................................................");
 	printf("\t|Nombre del articulo:      |");
 	puts("Ejemploarticulo2         |");
 	puts("\t......................................................");
@@ -133,10 +177,10 @@ void pantalla4() {
 	puts("VESTIDO ROJO LARGO       |");
 	puts("\t......................................................");
 	printf("\t|Piezas:                   |");
-	puts("5                        |");
+	puts("0                        |");
 	puts("\t......................................................");
 	printf("\t|Codigo del articulo:      |");
-	puts("EJEMPLO12345             |");
+	puts("1122334455             |");
 	puts("\t......................................................\n\n");
 	system("pause");
 }
