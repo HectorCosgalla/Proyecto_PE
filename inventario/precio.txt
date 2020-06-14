@@ -1,2 +1,6 @@
-EjemploArticulo
+Ejemploarticulo
 $200
+Ejemploarticulo2
+$150
+Ejemploarticulo1
+$45

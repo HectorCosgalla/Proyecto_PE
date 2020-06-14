@@ -1,2 +1,6 @@
-EjemploArticulo
-Vestido Rojo Corto
+Ejemploarticulo
+VESTIDO ROJO LARGO
+Ejemploarticulo2
+Vestido Corto Rojo
+Ejemploarticulo1
+Gorra Negra

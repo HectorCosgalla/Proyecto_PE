@@ -14,11 +14,12 @@ int login(void);
 void pantalla1(char, char[]);
 void pantalla2();
 void pantalla3();
-void mostrarInventario();
+void pantalla4();
+/*void mostrarInventario();
 void agregarProductos();
 
 
-/*struct articulos {
+struct articulos {
 char producto[100];
 char descripcion[100];
 char unidades [100];
@@ -30,7 +31,11 @@ struct articulos *primero, *ultimo;*/
 
 int main() {
 	int log;
-	log = login();
+
+	system("color 0F");
+	system("mode 800");
+
+	log = /*login()*/1;
 	if(log == 1){
 		int opc;
 		bool exit = false;
@@ -40,8 +45,6 @@ int main() {
 		primero = (struct articulos *) NULL;
 		ultimo = (struct articulos *) NULL;
 		*/
-		system("color 0F");
-		system("mode 800");
 		DIR* dir = opendir("inventario");
 		if (dir) {
 			closedir(dir);
@@ -81,7 +84,7 @@ int main() {
 				pantalla3();
 				break;
 			case 4:
-				//pantalla4();
+				pantalla4();
 				//mostrarInventario();
 				break;
 			case 5:
@@ -307,20 +310,84 @@ void pantalla3() {
 void pantalla4() {
 	system("cls");
 	FILE *inventario, *impresion;
-	char caracter, print;
+	char caracter, print, nombProd[50]={}, nombBuf[200]={};
+	int i=0;
 
+	puts("\n\n\n");
 	inventario = fopen("inventario/NombreProd.txt","r");
 	while ((caracter = fgetc(inventario)) != EOF) {
-		puts("\n\n\n\n\n\t......................................................");
+		puts("\n\n\t......................................................");
 		printf("\t|Nombre del articulo:      |");
-		impresion = fopen("inventario/NombreProd.txt", "r");
-		while ((print = fgetc(impresion)) != 10) {
+		printf("%c", caracter);
+		nombProd[i] = caracter;
+		i++;
+		while ((print = fgetc(inventario)) != '\n') {
 			printf("%c", print);
+			nombProd[i] = print;
+			i++;
 		}
+		nombProd[i] = 10;
 		printf("\n");
+
+		puts("\t......................................................");
+		printf("\t|Descripcion del articulo: |");
+		impresion = fopen("inventario/Descripcion.txt","r");
+		while (feof(impresion) == 0) {
+			fgets(nombBuf, 50, impresion);
+			if (strcmp(nombBuf, nombProd) == 0) {
+				fgets(nombBuf, 200, impresion);
+				printf("%s", nombBuf);
+			}
+		}
 		fclose(impresion);
+
+		puts("\t......................................................");
+		printf("\t|Piezas:                   |");
+		impresion = fopen("inventario/piezas.txt","r");
+		while (feof(impresion) == 0) {
+			fgets(nombBuf, 50, impresion);
+			if (strcmp(nombBuf, nombProd) == 0) {
+				fgets(nombBuf, 10, impresion);
+				printf("%s", nombBuf);
+			}
+		}
+		fclose(impresion);
+
+		puts("\t......................................................");
+		printf("\t|Precio:                   |");
+		impresion = fopen("inventario/precio.txt","r");
+		while (feof(impresion) == 0) {
+			fgets(nombBuf, 50, impresion);
+			if (strcmp(nombBuf, nombProd) == 0) {
+				fgets(nombBuf, 20, impresion);
+				printf("%s", nombBuf);
+			}
+		}
+		fclose(impresion);
+
+		puts("\t......................................................");
+		printf("\t|Codigo del articulo:      |");
+		impresion = fopen("inventario/codigo.txt","r");
+		while (feof(impresion) == 0) {
+			fgets(nombBuf, 50, impresion);
+			if (strcmp(nombBuf, nombProd) == 0) {
+				fgets(nombBuf, 20, impresion);
+				printf("%s", nombBuf);
+			}
+		}
+		fclose(impresion);
+		puts("\t......................................................");
+
+		i=0;
+		for (int j = 0; j < 50; j++) {
+			nombProd[j] = '\0';
+		}
 	}
 	fclose(inventario);
+
+
+
+
 	/*
 	puts("\n\n\n\n\n\t......................................................");
 	printf("\t|Nombre del articulo:      |");
@@ -395,10 +462,4 @@ int login(void){
 		}
 	}
 	return log;
-<<<<<<< HEAD
-
 }
-=======
-	
-
->>>>>>> 3b5c79d58b3e5adc1683ebf59bf17f2a11ffd509
