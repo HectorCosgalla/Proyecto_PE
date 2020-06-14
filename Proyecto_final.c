@@ -1,22 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "stdbool.h"
 #include "string.h"
 #include <dirent.h>
 
+<<<<<<< HEAD
 #define MAX 25
 
 void pantalla1(char, char[]);
+=======
+
+>>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
 void pantalla2();
 void pantalla3();
-void pantalla4();
+void mostrarInventario();
+void agregarProductos();
 
+
+struct articulos {
+        char producto[100];
+        char descripcion[100];
+        char unidades [100];
+        char precio[100];
+        int codigo [100];
+        struct articulos *enlace;
+        };
+struct articulos *primero, *ultimo;
 int main() {
 	int opc;
 	bool exit = false;
+<<<<<<< HEAD
 	char str, carac;
 	char linea[42] = "-----------------------------------------\n";
 
+=======
+    primero = (struct articulos *) NULL;
+    ultimo = (struct articulos *) NULL;
+    
+>>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
 	system("color 0F");
 	system("mode 800");
 
@@ -48,7 +70,12 @@ int main() {
 		scanf("%i",&opc);
 		switch(opc){
 		case 1:
+<<<<<<< HEAD
 			pantalla1(str, linea);
+=======
+            fflush(stdin);
+			agregarProductos();
+>>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
 			break;
 		case 2:
 			pantalla2();
@@ -57,7 +84,7 @@ int main() {
 			pantalla3();
 			break;
 		case 4:
-			pantalla4();
+		    mostrarInventario();
 			break;
 		case 5:
 			exit = true;
@@ -71,6 +98,7 @@ int main() {
 	return 0;
 }
 
+<<<<<<< HEAD
 void pantalla1( char str, char linea[] ) {
 	FILE *inventario;
 	char nomb[MAX];
@@ -139,6 +167,67 @@ void pantalla1( char str, char linea[] ) {
 	system("pause");
 	system("color 0F");
 }
+=======
+void agregarProductos() {
+	int codigo;
+	struct articulos *nuevo;
+    nuevo = (struct articulos *) malloc(sizeof(struct articulos));
+    
+    if (nuevo==NULL) printf( "No hay memoria disponible!\n");
+    fflush(stdin);
+    printf("\nAgrege nuevo producto\n");
+    printf("Nombre del producto: ");
+    gets(nuevo->producto);
+    fflush(stdin);
+    printf("Descripcion del producto: ");
+    gets(nuevo->descripcion);
+	fflush(stdin);
+    printf("Unidades del producto: ");
+    gets(nuevo->unidades);
+    fflush(stdin);
+    printf("Precio del producto: ");
+    gets(nuevo->precio);
+    fflush(stdin);
+    printf("Coloque un codigo al producto: ");
+    scanf("%d",nuevo->codigo);
+    
+    nuevo->enlace = NULL;
+    if (primero==NULL) {
+         printf( "Primer elemento\n");
+         primero = nuevo;
+         ultimo = nuevo;
+    }
+	else {
+           ultimo->enlace = nuevo;
+           ultimo = nuevo;
+      }
+ }
+
+ void mostrarInventario() {
+      struct articulos *auxiliar;
+      int i;
+      i=0;
+      auxiliar = primero;
+      printf("\nEl inventario es:\n");
+      while (auxiliar!=NULL) {
+			printf("---------------------------");
+			printf("\nNombre del producto: %s",auxiliar->producto);
+			printf("\nDescripcion del producto: %s",auxiliar->descripcion);
+			printf("\nUnidades del producto: %s",auxiliar->unidades);
+			printf("\nPrecio del producto: %s",auxiliar->precio);
+			printf("\nCodigo del producto: %d",auxiliar->codigo);
+            auxiliar = auxiliar->enlace;
+            i++;
+      }
+      if (i==0){
+	  printf( "\nLa lista está vacía!!\n" );};
+	fflush(stdin);
+	  getchar();
+	  system("cls");
+ }
+	
+
+>>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
 
 void pantalla2() {
 	char art[20];
@@ -218,6 +307,7 @@ void pantalla3() {
 	}
 }
 
+<<<<<<< HEAD
 void pantalla4() {
 	system("cls");
 
@@ -256,3 +346,5 @@ void pantalla4() {
 	*/
 	system("pause");
 }
+=======
+>>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
