@@ -383,6 +383,8 @@ int login(void){
 			}
 			i++;
 		}
+		continuar = 1;
+		i=0;
 		printf("\n");
 		if(strcmp(usuario, USUARIO) == 0 && strcmp(contrasenia,CONTRASENIA) == 0){
 			log = 1;
@@ -393,5 +395,10 @@ int login(void){
 		}
 	}
 	return log;
+<<<<<<< HEAD
 
 }
+=======
+	
+
+>>>>>>> 3b5c79d58b3e5adc1683ebf59bf17f2a11ffd509
