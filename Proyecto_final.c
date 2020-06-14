@@ -35,7 +35,7 @@ int main() {
 	system("color 0F");
 	system("mode 800");
 
-	log = /*login()*/1;
+	log = login();
 	if(log == 1){
 		int opc;
 		bool exit = false;
