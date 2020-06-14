@@ -4,6 +4,7 @@
 #include "stdbool.h"
 #include "string.h"
 #include <dirent.h>
+#include <conio.h>
 
 #define MAX 25
 #define USUARIO "admin"
@@ -343,6 +344,8 @@ void pantalla4() {
 }
 
 int login(void){
+	int c, i = 0;
+	int continuar = 1;
 	int log = 0;
 	int intentos = 0;
 	char usuario[MAX];
@@ -353,8 +356,18 @@ int login(void){
 		printf("\n\n\n\t\t\t\t\t\t\t\t\t\t\tUsuario: ");
 		gets(usuario);
 		printf("\n\n\n\t\t\t\t\t\t\t\t\t\t\tContraseña:");
-		gets(contrasenia);
-	
+		while(continuar == 1){
+			c = getch();
+			if(c == 13){
+				continuar = 0;
+				contrasenia[i] = '\0';
+			} else{
+				contrasenia[i] = c;
+				printf("*");
+			}
+			i++;
+		}
+		printf("\n");
 		if(strcmp(usuario, USUARIO) == 0 && strcmp(contrasenia,CONTRASENIA) == 0){
 			log = 1;
 		} else {
@@ -363,5 +376,6 @@ int login(void){
 			system("pause");
 		}
 	}	
-	return log;	
+	return log;
+	
 }
