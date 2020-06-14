@@ -367,6 +367,8 @@ int login(void){
 			}
 			i++;
 		}
+		continuar = 1;
+		i=0;
 		printf("\n");
 		if(strcmp(usuario, USUARIO) == 0 && strcmp(contrasenia,CONTRASENIA) == 0){
 			log = 1;
@@ -378,4 +380,4 @@ int login(void){
 	}	
 	return log;
 	
-}
+
