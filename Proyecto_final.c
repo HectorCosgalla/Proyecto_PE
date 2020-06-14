@@ -48,7 +48,7 @@ int main() {
 		} else {
 			system("mkdir inventario");
 		}
-	
+
 		puts("\n\n\n\n\n\n\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		puts("\t------------------------------------------------------------------------------------------BIENVENIDO-------------------------------------------------------------------------------------------");
 		puts("\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n\n\n\n");
@@ -114,7 +114,7 @@ void pantalla1( char str, char linea[] ) {
 	fputs(nomb, inventario);
 	fputc(10, inventario);
 	fclose(inventario);
-	
+
 	inventario = fopen("inventario/Descripcion.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Descripcion del articulo: |");
@@ -126,7 +126,7 @@ void pantalla1( char str, char linea[] ) {
 	}
 	fputc(10, inventario);
 	fclose(inventario);
-	
+
 	inventario = fopen("inventario/piezas.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Piezas:                   |");
@@ -138,7 +138,7 @@ void pantalla1( char str, char linea[] ) {
 	}
 	fputc(10, inventario);
 	fclose(inventario);
-	
+
 	inventario = fopen("inventario/precio.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Precio:                   |");
@@ -150,7 +150,7 @@ void pantalla1( char str, char linea[] ) {
 	}
 	fputc(10, inventario);
 	fclose(inventario);
-	
+
 	inventario = fopen("inventario/codigo.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Codigo del articulo:      |");
@@ -162,7 +162,7 @@ void pantalla1( char str, char linea[] ) {
 	fputc(10, inventario);
 	fclose(inventario);
 	//puts("EJEMPLO12345             ");
-	
+
 	system("cls");
 	system("color 2F");
 	puts("\n\n\n\n\n\t\t\t SE HA GUARDADO EXITOSAMENTE\n\n\n\n\n");
@@ -260,21 +260,21 @@ void pantalla2() {
 		puts("\t......................................................");
 		printf("Seleccione la opcion que desea modificar: ");
 		scanf("%d", &opc);
-		
+
 		system("cls");
 		puts("Usted selecciono la opcion 5) \n");
 		puts("|valor anterior:	0123456789");
 		printf("|Valor actual: ");
 		scanf("%d", &valido);
-		
+
 		system("cls");
 		system("color 2F");
 		puts("\n\n\n\n\n\t\t\t SE HA GUARDADO EXITOSAMENTE\n\n\n\n\n");
 		system("pause");
 		system("color 0F");
 	}
-	
-	
+
+
 }
 
 void pantalla3() {
@@ -306,7 +306,21 @@ void pantalla3() {
 
 void pantalla4() {
 	system("cls");
-	
+	FILE *inventario, *impresion;
+	char caracter, print;
+
+	inventario = fopen("inventario/NombreProd.txt","r");
+	while ((caracter = fgetc(inventario)) != EOF) {
+		puts("\n\n\n\n\n\t......................................................");
+		printf("\t|Nombre del articulo:      |");
+		impresion = fopen("inventario/NombreProd.txt", "r");
+		while ((print = fgetc(impresion)) != 10) {
+			printf("%c", print);
+		}
+		printf("\n");
+		fclose(impresion);
+	}
+	fclose(inventario);
 	/*
 	puts("\n\n\n\n\n\t......................................................");
 	printf("\t|Nombre del articulo:      |");
@@ -350,14 +364,16 @@ int login(void){
 	int intentos = 0;
 	char usuario[MAX];
 	char contrasenia[MAX];
-	
+
 	while(intentos<3 && log == 0){
 		system("cls");
 		printf("\n\n\n\t\t\t\t\t\t\t\t\t\t\tUsuario: ");
 		gets(usuario);
-		printf("\n\n\n\t\t\t\t\t\t\t\t\t\t\tContraseña:");
+		printf("\n\n\n\t\t\t\t\t\t\t\t\t\t\tContrase%ca:", 164);
 		while(continuar == 1){
+			fflush(stdin);
 			c = getch();
+			fflush(stdin);
 			if(c == 13){
 				continuar = 0;
 				contrasenia[i] = '\0';
@@ -371,11 +387,11 @@ int login(void){
 		if(strcmp(usuario, USUARIO) == 0 && strcmp(contrasenia,CONTRASENIA) == 0){
 			log = 1;
 		} else {
-			printf("Usuario o contraseña incorrecto\n");
+			printf("Usuario o contrase%ca incorrecto\n", 164);
 			intentos++;
 			system("pause");
 		}
-	}	
+	}
 	return log;
-	
+
 }
