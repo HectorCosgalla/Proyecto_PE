@@ -5,43 +5,36 @@
 #include "string.h"
 #include <dirent.h>
 
-<<<<<<< HEAD
 #define MAX 25
 
 void pantalla1(char, char[]);
-=======
-
->>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
 void pantalla2();
 void pantalla3();
 void mostrarInventario();
 void agregarProductos();
 
 
-struct articulos {
-        char producto[100];
-        char descripcion[100];
-        char unidades [100];
-        char precio[100];
-        int codigo [100];
-        struct articulos *enlace;
-        };
-struct articulos *primero, *ultimo;
+/*struct articulos {
+char producto[100];
+char descripcion[100];
+char unidades [100];
+char precio[100];
+int codigo [100];
+struct articulos *enlace;
+};
+struct articulos *primero, *ultimo;*/
+
 int main() {
 	int opc;
 	bool exit = false;
-<<<<<<< HEAD
 	char str, carac;
 	char linea[42] = "-----------------------------------------\n";
-
-=======
-    primero = (struct articulos *) NULL;
-    ultimo = (struct articulos *) NULL;
-    
->>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
+	/*
+  primero = (struct articulos *) NULL;
+  ultimo = (struct articulos *) NULL;
+  */
 	system("color 0F");
 	system("mode 800");
-
 	DIR* dir = opendir("inventario");
 	if (dir) {
 		closedir(dir);
@@ -70,12 +63,9 @@ int main() {
 		scanf("%i",&opc);
 		switch(opc){
 		case 1:
-<<<<<<< HEAD
 			pantalla1(str, linea);
-=======
-            fflush(stdin);
-			agregarProductos();
->>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
+      /*fflush(stdin);
+			agregarProductos();*/
 			break;
 		case 2:
 			pantalla2();
@@ -84,7 +74,8 @@ int main() {
 			pantalla3();
 			break;
 		case 4:
-		    mostrarInventario();
+			pantalla4();
+			//mostrarInventario();
 			break;
 		case 5:
 			exit = true;
@@ -98,7 +89,6 @@ int main() {
 	return 0;
 }
 
-<<<<<<< HEAD
 void pantalla1( char str, char linea[] ) {
 	FILE *inventario;
 	char nomb[MAX];
@@ -167,12 +157,12 @@ void pantalla1( char str, char linea[] ) {
 	system("pause");
 	system("color 0F");
 }
-=======
+/*
 void agregarProductos() {
 	int codigo;
 	struct articulos *nuevo;
     nuevo = (struct articulos *) malloc(sizeof(struct articulos));
-    
+
     if (nuevo==NULL) printf( "No hay memoria disponible!\n");
     fflush(stdin);
     printf("\nAgrege nuevo producto\n");
@@ -190,7 +180,7 @@ void agregarProductos() {
     fflush(stdin);
     printf("Coloque un codigo al producto: ");
     scanf("%d",nuevo->codigo);
-    
+
     nuevo->enlace = NULL;
     if (primero==NULL) {
          printf( "Primer elemento\n");
@@ -225,9 +215,7 @@ void agregarProductos() {
 	  getchar();
 	  system("cls");
  }
-	
-
->>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
+*/
 
 void pantalla2() {
 	char art[20];
@@ -307,7 +295,6 @@ void pantalla3() {
 	}
 }
 
-<<<<<<< HEAD
 void pantalla4() {
 	system("cls");
 
@@ -346,5 +333,3 @@ void pantalla4() {
 	*/
 	system("pause");
 }
-=======
->>>>>>> e3ed80390a22cbc8f7c70210f8c0518eb65b9cb8
