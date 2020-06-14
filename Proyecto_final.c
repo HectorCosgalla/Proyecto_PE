@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include "stdbool.h"
 #include "string.h"
+#include <dirent.h>
 
-void pantalla1();
+#define MAX 25
+
+void pantalla1(char, char[]);
 void pantalla2();
 void pantalla3();
 void pantalla4();
@@ -11,8 +14,19 @@ void pantalla4();
 int main() {
 	int opc;
 	bool exit = false;
+	char str, carac;
+	char linea[42] = "-----------------------------------------\n";
+
 	system("color 0F");
 	system("mode 800");
+
+	DIR* dir = opendir("inventario");
+	if (dir) {
+		closedir(dir);
+	} else {
+		system("mkdir inventario");
+	}
+
 	puts("\n\n\n\n\n\n\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 	puts("\t------------------------------------------------------------------------------------------BIENVENIDO-------------------------------------------------------------------------------------------");
 	puts("\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n\n\n\n");
@@ -34,7 +48,7 @@ int main() {
 		scanf("%i",&opc);
 		switch(opc){
 		case 1:
-			pantalla1();
+			pantalla1(str, linea);
 			break;
 		case 2:
 			pantalla2();
@@ -57,29 +71,71 @@ int main() {
 	return 0;
 }
 
-void pantalla1() {
-	int codigo;
+void pantalla1( char str, char linea[] ) {
+	FILE *inventario;
+	char nomb[MAX];
 	system("cls");
 	puts("\n\n\n\n\n\t......................................................");
+	inventario = fopen("inventario/NombreProd.txt", "a");
 	printf("\t|Nombre del articulo:      |");
-	puts("Ejemploarticulo");
+	fflush(stdin);
+	gets(nomb);
+	//puts("Ejemploarticulo");
+  fputs(nomb, inventario);
+  fputc(10, inventario);
+	fclose(inventario);
+
+	inventario = fopen("inventario/Descripcion.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Descripcion del articulo: |");
-	puts("VESTIDO ROJO LARGO");
+	//puts("VESTIDO ROJO LARGO");
+	fputs(nomb, inventario);
+  fputc(10, inventario);
+	while ((str = getchar()) != '\n') {
+    fputc(str, inventario);
+  }
+  fputc(10, inventario);
+	fclose(inventario);
+
+	inventario = fopen("inventario/piezas.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Piezas:                   |");
-	puts("5");
+	//puts("5");
+	fputs(nomb, inventario);
+  fputc(10, inventario);
+	while ((str = getchar()) != '\n') {
+    fputc(str, inventario);
+  }
+  fputc(10, inventario);
+	fclose(inventario);
+
+	inventario = fopen("inventario/precio.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Precio:                   |");
-	puts("$200");
+	//puts("$200");
+	fputs(nomb, inventario);
+  fputc(10, inventario);
+	while ((str = getchar()) != '\n') {
+    fputc(str, inventario);
+  }
+  fputc(10, inventario);
+	fclose(inventario);
+
+	inventario = fopen("inventario/codigo.txt", "a");
 	puts("\t......................................................");
 	printf("\t|Codigo del articulo:      |");
+	fputs(nomb, inventario);
+  fputc(10, inventario);
+	while ((str = getchar()) != '\n') {
+    fputc(str, inventario);
+  }
+  fputc(10, inventario);
+	fclose(inventario);
 	//puts("EJEMPLO12345             ");
-	scanf("%d", &codigo);
 
 	system("cls");
 	system("color 2F");
-	puts("\n\n\n\n\n\t\t\t SE A GUARDADO EXITOSAMENTE\n\n\n\n\n");
+	puts("\n\n\n\n\n\t\t\t SE HA GUARDADO EXITOSAMENTE\n\n\n\n\n");
 	system("pause");
 	system("color 0F");
 }
@@ -95,7 +151,7 @@ void pantalla2() {
 	if (valido != 0) {
 		system("cls");
 		system("color C0");
-		puts("\n\n\n\n\n\t\t\t NO SE HA ENCONTRADO EL ARTICULO\n\n\n\n\n");
+		puts("\n\n\n\n\n\t\t\t NO HAY ARTICULOS DISPONIBLES\n\n\n\n\n");
 		system("pause");
 		system("color 0F");
 	} else{
@@ -127,7 +183,7 @@ void pantalla2() {
 
 		system("cls");
 		system("color 2F");
-		puts("\n\n\n\n\n\t\t\t SE A GUARDADO EXITOSAMENTE\n\n\n\n\n");
+		puts("\n\n\n\n\n\t\t\t SE HA GUARDADO EXITOSAMENTE\n\n\n\n\n");
 		system("pause");
 		system("color 0F");
 	}
@@ -164,6 +220,8 @@ void pantalla3() {
 
 void pantalla4() {
 	system("cls");
+
+	/*
 	puts("\n\n\n\n\n\t......................................................");
 	printf("\t|Nombre del articulo:      |");
 	puts("Ejemploarticulo");
@@ -195,5 +253,6 @@ void pantalla4() {
 	printf("\t|Codigo del articulo:      |");
 	puts("1122334455");
 	puts("\t......................................................\n\n");
+	*/
 	system("pause");
 }
